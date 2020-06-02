@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+  redis:
+    image: redis:5-alpine
+    restart: always
+    ports:
+      - 127.0.0.1:6379:6379
+  # nginx:
+  #   image: jwilder/nginx-proxy
+  #   ports:
+  #     - "127.0.0.1:443:443"
+  #   volumes:
+  #     - /var/run/docker.sock:/tmp/docker.sock:ro
+  #     - "./config/nginx.conf:/etc/nginx/conf.d/yoastnginx.conf"
+  #     - "./config:/etc/nginx/certs"
+
+  golang:
+    build: .
+    # image: danil-peer-calls
+    environment: 
+      - VIRTUAL_HOST=call.serviceline.flownform.com
+      - VIRTUAL_PROTO=http
+      - VIRTUAL_PORT=3000

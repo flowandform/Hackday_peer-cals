@@ -1,0 +1,61 @@
+.dropdown
+  position: relative
+
+  button
+    font-size: 1rem
+    background: none
+    border: none
+    color: $color-fg
+    cursor: pointer
+
+.dropdown-backdrop
+  position: fixed
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  z-index: $z-index-backdrop
+
+.dropdown-list
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2)
+
+  visibility: hidden
+  opacity: 0
+  position: absolute
+  bottom: 100%
+  right: 0
+  list-style-type: none
+  padding: 0
+  margin: 0
+  box-shadow: 0 0 3px rgba(black, 0.1)
+  user-select: none
+  z-index: $z-index-dropdown
+
+  li
+    display: block
+    background-color: white
+    color: black
+    padding: 0.5rem
+    cursor: pointer
+    white-space: nowrap
+
+    &:hover
+      background-color: #e6e6e6
+
+    &:first-child
+      border-radius: 5px 5px 0 0
+
+    &:last-child
+      border-radius: 0 0 5px 5px
+
+    & + li
+      border-top: 1px solid #e6e6e6
+
+  &.dropdown-list-open
+    visibility: visible
+    opacity: 1
+
+.dropdown-list.dropdown-center
+  right: inherit
+  left: 50%
+  transform: translateX(-50%)
